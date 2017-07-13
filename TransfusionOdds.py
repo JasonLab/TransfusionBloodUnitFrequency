@@ -58,10 +58,26 @@ print("Hello. What is the first antibody the patient has? Enter it from the list
 print("If there are no more antibodies you are looking for, just enter 'none'")
 units = int(input("Enter the amount of units you need:"))
 print("Antigens supported in the current database are: ", ", ".join(antigens.keys()))
-first_antibody =  input("Enter the first antibody here: ")
-first_antibody = first_antibody.lower()
-second_antibody = input("Enter the second antibody here:")
-second_antibody = second_antibody.lower()
+
+valid_input = 0
+#Get first input from the user and make sure it is in the list of antigens
+while valid_input != 1:
+    first_antibody =  input("Enter the first antibody here: ")
+    first_antibody = first_antibody.lower()
+    #Check if input is in the list of antigens
+    if first_antibody in antigens:
+        valid_input = 1
+    else:
+        print("That is not an antibody.")
+#Retrieve 2 input from the user and make sure it is either in the list of antigens or they have entered "none"
+while valid_input != 2:
+    second_antibody = input("Enter the second antibody here:")
+    second_antibody = second_antibody.lower()
+    #Check if the input is in the list of antigens
+    if second_antibody in antigens or second_antibody == "none":
+        valid_input = 2
+    else:
+        print("That is not an antibody.")
 
 if second_antibody == "none":
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -69,8 +85,13 @@ if second_antibody == "none":
     print("Your odds of finding one antigen negative unit are:", round(blood_percentage1(first_antibody), 1), "%")
     print("For",units, " units you would have to type", round((units/((blood_percentage1(first_antibody))/100)),0), " units") #will clean this up eventually
 else:
-    third_antibody = input("Enter the third antibody here:")
-    third_antibody = third_antibody.lower()
+    while valid_input != 3:
+        third_antibody = input("Enter the third antibody here:")
+        third_antibody = third_antibody.lower()
+        if third_antibody in antigens or third_antibody == "none":
+            valid_input = 3
+        else:
+            print("That is not an antibody.")
     if third_antibody == "none":
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
