@@ -31,6 +31,25 @@ antigen_var_list in the same order!!! Otherwise the functions won't won't atribu
 antigen_list= ["d","bigc","littlec","bige","littlee","bigk","littlek","fya","fyb","jka","jkb","m","n","bigs","littles"]
 antigen_var_list= [d,bigc,littlec,bige,littlee,bigk,littlek,fya,fyb,jka,jkb,m,n,bigs,littles]
 
+#Created a dictionary that will hold the antigens and their value
+antigens = {} 
+#Added the antigens to the dictionary
+antigens['d'] = 0.936
+antigens['bigc'] = 0.87
+antigens['littlec'] = 0.58
+antigens['bige'] = 0.20
+antigens['littlee'] = 0.98
+antigens['bigk'] = 0.035
+antigens['littlek'] = 0.9997
+antigens['fya'] = 0.874
+antigens['fyb'] = 0.576
+antigens['jka'] = 0.815
+antigens['jkb'] = 0.674
+antigens['m'] = 0.887
+antigens['n'] = 0.654
+antigens['bigs'] = 0.548
+antigens['littles'] = 0.887
+
 def blood_percentage1(x):
     if first_antibody in antigen_list:
         locationantigen = (antigen_list.index(x))
